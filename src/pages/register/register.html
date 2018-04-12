@@ -1,0 +1,36 @@
+<ion-content padding>
+  <div class="header-logo">
+    <img src="assets/imgs/chart@1x.png" alt="logo">
+    <h4 class="title">Managing your money.<br> Where is my money going day-to-day? </h4>
+    <div id="recaptcha-container"></div>
+  </div>
+  <div class="form">
+    <form [formGroup]="formGroup" (ngSubmit)="register(formGroup.value)">
+      
+        <ion-item>
+            <ion-label color="primary" stacked>Email</ion-label>
+            <ion-input type="email" placeholder="Enter email address" formControlName="email"></ion-input>
+          </ion-item>
+          <div class="message-box" *ngIf="email.hasError('required') && email.touched">
+            <p class="error">The field email is required</p>
+          </div>
+          <div class="message-box" *ngIf="message">
+              <p class="error">{{message}}</p>
+            </div>
+          <ion-item>
+            <ion-label color="primary" stacked>Password</ion-label>
+            <ion-input type="password" placeholder="Enter password" formControlName="password"></ion-input>
+          </ion-item>
+          <div class="message-box" *ngIf="password.hasError('required') && password.touched">
+            <p class="error">The field password is required</p>
+          </div>
+        
+          <div class="div-btn-register">
+              <button ion-button full [disabled]="!formGroup.valid">Register</button>
+          </div>
+          <div class="div-p ready-account">
+            <p>Already an account? <a href="">Login</a></p>
+          </div>
+    </form>
+  </div>
+</ion-content>
