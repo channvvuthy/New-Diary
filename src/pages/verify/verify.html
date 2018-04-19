@@ -5,14 +5,16 @@
         <div id="recaptcha-container"></div>
     </div>
     <div class="conf-img">
-      <p>Please confirm your phone to complete your registration.</p>
+      <p>Please confirm your email address to complete your registration.</p>
     </div>
-    <ion-item>
-        <ion-label color="primary" stacked>Code</ion-label>
-        <ion-input type="number" placeholder="Enter your verify code"></ion-input>
-    </ion-item>
-    <div class="div-btn-register">
-        <button ion-button full>Verify</button>
-    </div>
+    <form [formGroup]="formGroup" (ngSubmit)="verify(formGroup.value)">
+        <ion-item>
+            <ion-label color="primary" stacked>Code</ion-label>
+            <ion-input type="text" placeholder="Enter your verify code" formControlName="code"></ion-input>
+        </ion-item>
+        <div class="div-btn-register">
+            <button ion-button full>Verify</button>
+        </div>
+    </form>
   
 </ion-content>

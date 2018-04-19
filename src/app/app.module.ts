@@ -12,6 +12,8 @@ import { LoginPage } from '../pages/login/login';
 import * as firebase from 'firebase';
 import { VerifyPage } from '../pages/verify/verify';
 import { Firebase } from '@ionic-native/firebase';
+import { IonicStorageModule } from '@ionic/storage';
+
 export const  config = {
     apiKey: "AIzaSyDYEbiulCnkVBcB8EiXEEDf6wbgAHhUCC4",
     authDomain: "diary-management.firebaseapp.com",
@@ -33,6 +35,7 @@ export const  config = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
