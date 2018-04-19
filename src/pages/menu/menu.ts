@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
+import { HttpClient } from '@angular/common/http';
+import { Storage } from '@ionic/storage';
+
 
 /**
  * Generated class for the MenuPage page.
@@ -8,18 +12,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-menu',
   templateUrl: 'menu.html',
 })
 export class MenuPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MenuPage');
+  rootPage = TabsPage;
+  name:string="";
+  constructor(public navCtrl: NavController, public navParams: NavParams,private http:HttpClient,public storage:Storage) {
+    storage.get('token').then((token) => {
+      this.http.get("http://localhost:8000/api/user/profile?token="+token+"").subscribe(data=>{
+        this.name=data.user.email;
+        if(data.user.photo){
+          this.imgProfile=data.user.photo;
+        }
+      });
+    });
+    
   }
 
 }

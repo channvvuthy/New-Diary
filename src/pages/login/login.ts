@@ -5,7 +5,9 @@ import {Observable} from "rxjs/Observable";
 import { HttpClient } from '@angular/common/http';
 import { RegisterPage } from '../register/register';
 import { Storage } from '@ionic/storage';
-import { HomePage } from '../home/home';
+import { MenuPage } from '../menu/menu';
+
+
 
 /**
  * Generated class for the LoginPage page.
@@ -49,7 +51,7 @@ export class LoginPage {
       this.data=this.http.post("http://localhost:8000/login",postData);
       this.data.subscribe((data)=>{
         this.storage.set('token',data.token);
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(MenuPage);
       },(error)=>{
         this.presentAlert(error.error.error);
       });
@@ -58,8 +60,6 @@ export class LoginPage {
   goRegister(){
     this.navCtrl.push(RegisterPage);
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+
 
 }

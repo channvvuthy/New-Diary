@@ -6,13 +6,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 import {HttpClientModule} from '@angular/common/http';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from '../pages/login/login';
 import * as firebase from 'firebase';
 import { VerifyPage } from '../pages/verify/verify';
 import { Firebase } from '@ionic-native/firebase';
 import { IonicStorageModule } from '@ionic/storage';
+import {MenuPage} from "../pages/menu/menu";
+import { TabsPage } from '../pages/tabs/tabs';
+
+
+
 
 export const  config = {
     apiKey: "AIzaSyDYEbiulCnkVBcB8EiXEEDf6wbgAHhUCC4",
@@ -26,10 +30,11 @@ export const  config = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     RegisterPage,
     LoginPage,
     VerifyPage,
+    MenuPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -40,10 +45,11 @@ export const  config = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     RegisterPage,
     LoginPage,
     VerifyPage,
+    MenuPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
